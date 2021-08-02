@@ -1,6 +1,6 @@
 const amqplib = require('amqplib');
 const debug = require('./utils/debug')('micromq-rabbit');
-
+const time = (new Date()).getTime();
 class RabbitApp {
   constructor(options) {
     this.options = options;
@@ -18,7 +18,7 @@ class RabbitApp {
   }
 
   get queuePidName() {
-    return `${this.responsesQueueName}-${(new Date()).getTime()}`;
+    return `${this.responsesQueueName}-${time}`;
   }
 
   async createConnection() {
